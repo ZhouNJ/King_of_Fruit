@@ -42,6 +42,7 @@ private function UpdateFrame():void
 private function Draw(elapsedTime:Number):void
 {
 Draw_TitleScreen();
+Draw_GameOptions();
 
 }
 
@@ -57,4 +58,26 @@ private function Draw_TitleScreen():void
   screenBuffer.copyPixels(titleScreenBitmap, 
                           new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT),
                           new Point(0,0)); 
+}
+
+private var gameOptionsBitmap:BitmapData = null;
+private function Draw_GameOptions():void
+{
+  if (gameOptionsBitmap == null)
+  {
+    gameOptionsBitmap = new BitmapData(300,300,true,0x00000000);
+    gameOptionsBitmap.draw(new gameOptionsImg());
+  }
+
+  screenBuffer.copyPixels(gameOptionsBitmap,
+                          new Rectangle(0, 0, 300, 100),
+                          new Point(250,280));
+
+  screenBuffer.copyPixels(gameOptionsBitmap,
+                          new Rectangle(0, 110, 300, 100),
+                          new Point(250,380));
+
+  screenBuffer.copyPixels(gameOptionsBitmap,
+                          new Rectangle(0, 200, 300, 100),
+                          new Point(250,480));
 }
