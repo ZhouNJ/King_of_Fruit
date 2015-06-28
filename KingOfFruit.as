@@ -66,7 +66,7 @@ private function Draw_GameOptions():void
 {
   if (gameOptionBackgroundBitmap == null)
 { 
-  gameOptionBackgroundBitmap = new BitmapData(350,350,true,0x00000000);
+  gameOptionBackgroundBitmap = new BitmapData(300,200,true,0x00000000);
   gameOptionBackgroundBitmap.draw(new gameOptionBackgroundImg()); 
 }
   if (gameOptionsBitmap == null)
@@ -76,28 +76,28 @@ private function Draw_GameOptions():void
   }
   
   screenBuffer.copyPixels(gameOptionBackgroundBitmap,
-                        new Rectangle(0, 120, 350, 120),
-                        new Point(225,255));
+                        new Rectangle(0, 0, 300, 100),
+                        new Point(250,230));
 
 screenBuffer.copyPixels(gameOptionBackgroundBitmap,
-                        new Rectangle(0, 0, 350, 120),
-                        new Point(225,355));
+                        new Rectangle(0, 0, 300, 100),
+                        new Point(250,330));
 
 screenBuffer.copyPixels(gameOptionBackgroundBitmap,
-                        new Rectangle(0, 120, 350, 120),
-                        new Point(225,455));
+                        new Rectangle(0, 0, 300, 100),
+                        new Point(250,430));
 
   screenBuffer.copyPixels(gameOptionsBitmap,
-                          new Rectangle(0, 0, 300, 100),
-                          new Point(250,280));
+                          new Rectangle(50, 30, 200, 40),
+                          new Point(300,260));
 
   screenBuffer.copyPixels(gameOptionsBitmap,
-                          new Rectangle(0, 110, 300, 100),
-                          new Point(250,380));
+                          new Rectangle(50, 130, 200, 40),
+                          new Point(300,360));
 
   screenBuffer.copyPixels(gameOptionsBitmap,
-                          new Rectangle(0, 200, 300, 100),
-                          new Point(250,480));
+                          new Rectangle(50, 230, 200, 40),
+                          new Point(300,460));
 						  
 
 						  
