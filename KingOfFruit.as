@@ -61,13 +61,31 @@ private function Draw_TitleScreen():void
 }
 
 private var gameOptionsBitmap:BitmapData = null;
+private var gameOptionBackgroundBitmap:BitmapData = null;
 private function Draw_GameOptions():void
 {
+  if (gameOptionBackgroundBitmap == null)
+{ 
+  gameOptionBackgroundBitmap = new BitmapData(350,350,true,0x00000000);
+  gameOptionBackgroundBitmap.draw(new gameOptionBackgroundImg()); 
+}
   if (gameOptionsBitmap == null)
   {
     gameOptionsBitmap = new BitmapData(300,300,true,0x00000000);
     gameOptionsBitmap.draw(new gameOptionsImg());
   }
+  
+  screenBuffer.copyPixels(gameOptionBackgroundBitmap,
+                        new Rectangle(0, 120, 350, 120),
+                        new Point(225,255));
+
+screenBuffer.copyPixels(gameOptionBackgroundBitmap,
+                        new Rectangle(0, 0, 350, 120),
+                        new Point(225,355));
+
+screenBuffer.copyPixels(gameOptionBackgroundBitmap,
+                        new Rectangle(0, 120, 350, 120),
+                        new Point(225,455));
 
   screenBuffer.copyPixels(gameOptionsBitmap,
                           new Rectangle(0, 0, 300, 100),
@@ -80,4 +98,9 @@ private function Draw_GameOptions():void
   screenBuffer.copyPixels(gameOptionsBitmap,
                           new Rectangle(0, 200, 300, 100),
                           new Point(250,480));
+						  
+
+						  
+
 }
+
