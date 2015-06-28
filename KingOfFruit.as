@@ -3,6 +3,8 @@ import flash.events.*;
 import mx.events.*;
 import mx.controls.*;
 
+include "Images.as";
+
 private static const SCREEN_WIDTH:int = 800;
 private static const SCREEN_HEIGHT:int = 600; 
 
@@ -39,5 +41,20 @@ private function UpdateFrame():void
 
 private function Draw(elapsedTime:Number):void
 {
+Draw_TitleScreen();
 
+}
+
+private var titleScreenBitmap:BitmapData = null;
+private function Draw_TitleScreen():void
+{
+  if (titleScreenBitmap == null)
+  {
+    titleScreenBitmap = new BitmapData(SCREEN_WIDTH,SCREEN_HEIGHT);
+    titleScreenBitmap.draw(new titleScreenImg()); 
+  }
+
+  screenBuffer.copyPixels(titleScreenBitmap, 
+                          new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT),
+                          new Point(0,0)); 
 }
