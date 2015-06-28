@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+				name="KingOfFruit"
+				backgroundColor="#000000"
+				horizontalAlign="center"
+				creationComplete="Init();"
+				enterFrame="UpdateFrame();"
+				paddingLeft="0"
+				paddingTop="0"
+				paddingBottom="0"
+				paddingRight="0"
+				width="800" height="600">
+	
+	<mx:Script>
+		<![CDATA[
+			include "KingOfFruit.as";
+		]]>
+	</mx:Script>
+	
+	<mx:Canvas id="gamePanel" x="0" y="0" width="100%" height="100%"/>
+</mx:Application>
