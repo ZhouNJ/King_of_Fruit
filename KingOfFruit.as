@@ -2,27 +2,33 @@ import flash.display.*;
 import flash.events.*;
 import mx.events.*;
 import mx.controls.*;
+import flash.external.ExternalInterface;
 include "GameMenu.as";
 include "Game.as"
+include "Activation.as";
 
 include "Images.as";
 
 private static const SCREEN_WIDTH:int = 800;
 private static const SCREEN_HEIGHT:int = 600; 
 
+
 private var initializationCompleted:Boolean = false;
 private var screenBuffer:BitmapData = null
 
+private static const ACTIVATION:int = 0;
 private static const GAME_MENU:int = 1;
 private static const GAME:int = 2;
+
 
 private var state:int = GAME_MENU;
 
 public function Init():void 
 { 
   screenBuffer = new BitmapData(SCREEN_WIDTH, SCREEN_HEIGHT, false, 0x00000000);
-
   initializationCompleted = true;
+  if (ExternalInterface.available)
+  state = ACTIVATION;
 }
 
 private var prevTime:Date = null;
@@ -56,6 +62,9 @@ private function Draw(elapsedTime:Number):void
   case GAME:
     Draw_Game(elapsedTime); 
     break; 
+  case ACTIVATION:
+	Draw_Activation(elapsedTime);
+	break;
   }
 }
 
@@ -83,6 +92,9 @@ private function MouseUp(event:MouseEvent):void
   case GAME:
     MouseUp_Game(event);
     break;
+  case ACTIVATION:
+	MouseUp_Activation(event);
+	break;
   }
 }
 
