@@ -1,1 +1,1 @@
-D:\"Program Files"\Adobe\"Adobe Flash Builder 4.7"\sdks\4.6.0\bin\mxmlc.exe KingOfFruit.mxml
+C:\"Program Files"\Adobe\"Adobe Flash Builder 4.7 (64 Bit)"\sdks\4.6.0\bin\mxmlc.exe KingOfFruit.mxml

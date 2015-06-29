@@ -8,6 +8,12 @@ include "Images.as";
 private static const SCREEN_WIDTH:int = 800;
 private static const SCREEN_HEIGHT:int = 600; 
 
+private static const OPTION_SINGLE:int = 0;
+private static const OPTION_DOUBLE:int = 1;
+private static const OPTION_GUIDES:int = 2;
+
+private var pressedOption:int = -1;
+
 private var initializationCompleted:Boolean = false;
 private var screenBuffer:BitmapData = null;
 
@@ -75,32 +81,48 @@ private function Draw_GameOptions():void
     gameOptionsBitmap.draw(new gameOptionsImg());
   }
   
-  screenBuffer.copyPixels(gameOptionBackgroundBitmap,
-                        new Rectangle(0, 0, 300, 100),
-                        new Point(250,230));
+  for(var i:int = OPTION_SINGLE; i<= OPTION_GUIDES; i++)
+  {
+	var srcY:int = pressedOption == i ? 0 : 100;
+  
+    screenBuffer.copyPixels(gameOptionBackgroundBitmap,
+                        new Rectangle(0, srcY, 300, 100),
+                        new Point(250,230+i*100+(pressedOption == i ? 1:0) ));
 
-screenBuffer.copyPixels(gameOptionBackgroundBitmap,
-                        new Rectangle(0, 0, 300, 100),
-                        new Point(250,330));
-
-screenBuffer.copyPixels(gameOptionBackgroundBitmap,
-                        new Rectangle(0, 0, 300, 100),
-                        new Point(250,430));
-
-  screenBuffer.copyPixels(gameOptionsBitmap,
-                          new Rectangle(50, 30, 200, 40),
-                          new Point(300,260));
-
-  screenBuffer.copyPixels(gameOptionsBitmap,
-                          new Rectangle(50, 130, 200, 40),
-                          new Point(300,360));
-
-  screenBuffer.copyPixels(gameOptionsBitmap,
-                          new Rectangle(50, 230, 200, 40),
-                          new Point(300,460));
-						  
-
-						  
-
+    screenBuffer.copyPixels(gameOptionsBitmap,
+                          new Rectangle(50, 30+i*100, 200, 40),
+                          new Point(300,260+i*100+(pressedOption == i ? 1:0) )); 
+  
+  }
+  
 }
 
+
+private function MouseDown(event:MouseEvent):void 
+{ 
+  var mx:int = event.localX;
+  var my:int = event.localY;
+
+  for (var i:int = OPTION_SINGLE; i <= OPTION_GUIDES; i++)
+      	if ( (mx >=270)&&(mx<520)&&(my>=240 + i*100)&&(my<=310+i*100) )
+        pressedOption = i;
+}
+
+private function MouseUp( event:MouseEvent):void
+{
+	var mx:int = event.localX;
+	var my:int = event.localY;
+	
+	pressedOption = -1;
+}
+
+private function MouseMoved(event:MouseEvent):void
+{
+	var mx:int = event.localX;
+	var my:int = event.localY;
+	
+	for (var i:int = OPTION_SINGLE; i<= OPTION_GUIDES; i++)
+		if( pressedOption == i)
+			if ( (mx >=270)||(mx<520)||(my>=240 + i*100)||(my<=310+i*100) )
+			pressedOption = -1;
+}
