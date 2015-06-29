@@ -6,7 +6,7 @@ import flash.external.ExternalInterface;
 include "GameMenu.as";
 include "Game.as"
 include "Activation.as";
-
+include "Effects.as"
 include "Images.as";
 
 private static const SCREEN_WIDTH:int = 800;

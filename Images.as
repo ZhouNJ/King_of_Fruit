@@ -5,3 +5,5 @@
 [Embed(source="Images/GameOptionsBackground.png")] private var gameOptionBackgroundImg:Class;
 
 [Embed(source="Images/ActivationBanner.png")] private var activationBannerImg:Class;
+
+[Embed(source="Images/FadeEffect.png")] private var fadeEffectImg:Class;

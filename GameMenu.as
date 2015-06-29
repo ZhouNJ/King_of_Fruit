@@ -2,6 +2,15 @@ private static const OPTION_SINGLE:int = 0;
 private static const OPTION_DOUBLE:int = 1;
 private static const OPTION_GUIDES:int = 2;
 
+private static const TITLE_SHOW:int = 1;
+private static const GAMEOPTIONS_IN:int = 2;
+private static const GAMEOPTIONS_WAIT:int = 3;
+private static const GAMEOPTIONS_OUT:int = 4;
+private static const TITLE_HIDE:int = 5;
+
+private var gameMenuState:int = TITLE_SHOW;
+private var gameMenuTime:Number = 0;
+
 private var pressedOption:int = -1;
 
 private function Draw_GameMenu(elapsedTime:Number):void
