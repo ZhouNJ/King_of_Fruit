@@ -46,12 +46,22 @@ private function Draw_ActivationBanner():void
     activationBannerBitmap.draw(new activationBannerImg());
   }
 
+  var xPos:int = 0;
+  
+  if (activationState == ACTIVATION_HIDE)
+    xPos = (int)(activationTime * 300);
+
   screenBuffer.copyPixels(activationBannerBitmap,
-                          new Rectangle(0, 0, SCREEN_WIDTH , 36),
-                          new Point(0,500)); 
+                          new Rectangle(0, 0, SCREEN_WIDTH / 2, 36),
+                          new Point(-xPos,500));
+                          
+  screenBuffer.copyPixels(activationBannerBitmap,
+                          new Rectangle(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, 36),
+                          new Point(SCREEN_WIDTH / 2 + xPos,500));  
 }
 
 private function MouseUp_Activation(event:MouseEvent):void 
 { 
-  state = GAME_MENU;
+  activationState = ACTIVATION_HIDE;
+  activationTime = 0;  
 }

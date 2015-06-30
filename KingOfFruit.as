@@ -3,6 +3,7 @@ import flash.events.*;
 import mx.events.*;
 import mx.controls.*;
 import flash.external.ExternalInterface;
+
 include "GameMenu.as";
 include "Game.as"
 include "Activation.as";
@@ -43,9 +44,11 @@ private function UpdateFrame():void
 
   if (prevTime != null) 
     elapsedTime = (currTime.getTime() - prevTime.getTime()) / 1000.0;
-
+  
+  prevTime = currTime;
+  
   Draw(elapsedTime);
-
+  
   gamePanel.graphics.clear(); 
   gamePanel.graphics.beginBitmapFill(screenBuffer, null, false, false);
   gamePanel.graphics.drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
