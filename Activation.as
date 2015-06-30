@@ -19,10 +19,7 @@ private function Draw_Activation(ellapsedTime:Number):void
     Apply_FadeEffect(1 - activationTime); 
 
     if (activationTime >= 1)
-    {
-      activationState = ACTIVATION_WAIT;
-      activationTime = 0;
-    }
+		ChangeState_Activation(ACTIVATION_WAIT);
     break;
   case ACTIVATION_WAIT:
     break; 
@@ -30,10 +27,16 @@ private function Draw_Activation(ellapsedTime:Number):void
     if (activationTime >= 1)
     {
       state = GAME_MENU;
-      gameMenuState = GAMEOPTIONS_IN;
+      ChangeState_GameMenu(GAMEOPTIONS_IN);
     } 
     break; 
   } 
+}
+
+private function ChangeState_Activation(newState:int):void
+{  
+  activationState = newState;
+  activationTime = 0;
 }
 
 private var activationBannerBitmap:BitmapData = null;
@@ -60,8 +63,14 @@ private function Draw_ActivationBanner():void
                           new Point(SCREEN_WIDTH / 2 + xPos,500));  
 }
 
+private function MouseDown_Activation(event:MouseEvent):void 
+{ 
+	if (activationState == ACTIVATION_WAIT)
+    PlaySound(OPTIONSELECTED_SOUND); 
+}
+
 private function MouseUp_Activation(event:MouseEvent):void 
 { 
-  activationState = ACTIVATION_HIDE;
-  activationTime = 0;  
+    if (activationState == ACTIVATION_WAIT)
+    ChangeState_Activation(ACTIVATION_HIDE);
 }

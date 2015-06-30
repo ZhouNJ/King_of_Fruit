@@ -9,6 +9,7 @@ include "Game.as"
 include "Activation.as";
 include "Effects.as"
 include "Images.as";
+include "Sounds.as"
 
 private static const SCREEN_WIDTH:int = 800;
 private static const SCREEN_HEIGHT:int = 600; 
